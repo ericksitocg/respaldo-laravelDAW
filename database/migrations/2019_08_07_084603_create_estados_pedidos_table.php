@@ -15,7 +15,7 @@ class CreateEstadosPedidosTable extends Migration
     {
         Schema::create('estadosPedidos', function (Blueprint $table) {
             $table->bigIncrements('estadoPedido_id');
-            $table->string('estadoPedido');
+            $table->string('estadoPedido',10);
             $table->timestamps();
         });
     }

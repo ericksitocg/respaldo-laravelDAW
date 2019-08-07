@@ -14,7 +14,14 @@ class CreatePedidosDetallesTable extends Migration
     public function up()
     {
         Schema::create('pedidosDetalles', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        	$table->integer('cantidad');
+        	$table->float('precio');
+            //Claves foraneas
+            $table->unsignedBigInteger('pedido_id')->primary();//Tambien es clave primaria
+            $table->foreign('pedido_id')->references('pedido_id')->on('pedidos')->onDelete('cascade');
+
+            $table->unsignedBigInteger('producto_id');
+            $table->foreign('producto_id')->references('producto_id')->on('productos')->onDelete('cascade');
             $table->timestamps();
         });
     }

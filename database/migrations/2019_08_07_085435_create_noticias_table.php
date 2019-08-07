@@ -14,8 +14,17 @@ class CreateNoticiasTable extends Migration
     public function up()
     {
         Schema::create('noticias', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('noticia_id');
             $table->timestamps();
+
+            $table->string('titulo',10);
+            $table->string('descripcion',20);
+            $table->string('src_imagen',20);
+
+            //Foreig key
+
+            $table->unsignedBigInteger('usuario_id');
+            $table->foreign('usuario_id')->references('usuario_id')->on('usuarios')->onDelete('cascade');
         });
     }
 
